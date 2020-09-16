@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import dj_database_url
-import django_heroku
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -23,18 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-if os.environ.get('ENV') == 'PRODUCTION':
-    SECRET_KEY = os.environ.get('SECRET_KEY')
-else:
-    SECRET_KEY = '-()loz!vvo4&z_#ke3ipzj)%sk5*fn33h!unzt8^z00k9*xqwr'
+SECRET_KEY = '-()loz!vvo4&z_#ke3ipzj)%sk5*fn33h!unzt8^z00k9*xqwr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PRODUCTION':
-    DEBUG = False
-else:
-    DEBUG = True
+DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'elwaze-purbeurre.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
@@ -99,9 +91,6 @@ DATABASES = {
     },
 }
 
-if os.environ.get('ENV') == 'PRODUCTION':
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -144,6 +133,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-
-# Activate Django-Heroku.
-django_heroku.settings(locals())
