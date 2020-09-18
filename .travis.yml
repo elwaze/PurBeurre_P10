@@ -9,7 +9,7 @@ before_script:
 env: DJANGO_SETTINGS_MODULE="pur_beurre.settings.test_settings"
 
 services:
-  - sqlite3
+  - postgresql
 
 script:
   - coverage run ./manage.py test tests.apps --settings=pur_beurre.settings.test_settings
