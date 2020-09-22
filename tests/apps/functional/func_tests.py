@@ -67,6 +67,7 @@ class GeneralTestCase(LiveServerTestCase):
         options.add_argument("--no-default-browser-check")
         options.add_argument("--no-first-run")
         options.add_argument("--disable-default-apps")
+        options.add_argument("headless")
 
         cls.selenium = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
         cls.selenium.implicitly_wait(10)
