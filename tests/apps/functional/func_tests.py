@@ -60,10 +60,9 @@ class GeneralTestCase(LiveServerTestCase):
     @classmethod
     def setup_selenium_driver(cls):
         options = webdriver.ChromeOptions()
-        options.add_argument("start-maximized")
+        options.add_argument("window-size=1920x1480")
         options.add_argument("disable-infobars")
-        options.add_argument("--disable-extensions")
-
+        options.add_argument("disable-extensions")
         options.add_argument("headless")
 
         cls.selenium = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
