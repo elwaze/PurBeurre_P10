@@ -63,6 +63,7 @@ class GeneralTestCase(LiveServerTestCase):
         options.add_argument("start-maximized")
         options.add_argument("disable-infobars")
         options.add_argument("--disable-extensions")
+        options.add_argument("--no-sandbox")
 
         cls.selenium = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
         cls.selenium.implicitly_wait(10)
