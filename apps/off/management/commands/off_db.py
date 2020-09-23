@@ -16,11 +16,11 @@ class Command(BaseCommand):
 
     @property
     def product_count(self):
-        return 5 if self.testing else 500
+        return 5 if self.testing else 1000
 
     @property
     def category_count(self):
-        return 2 if self.testing else 15
+        return 2 if self.testing else 30
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
