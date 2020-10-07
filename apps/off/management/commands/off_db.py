@@ -81,14 +81,16 @@ class Command(BaseCommand):
                 nutrition_img
             ]):
                 # insert product in DB
-                Product.objects.get_or_create(
-                    name=name,
-                    link=url,
-                    nutriscore=nutriscore.lower(),
-                    category=category,
-                    img=img,
-                    nutrition_img=nutrition_img
-                )
+                Product.objects.bulk_create([
+                    Product(
+                        name=name,
+                        link=url,
+                        nutriscore=nutriscore.lower(),
+                        category=category,
+                        img=img,
+                        nutrition_img=nutrition_img
+                    ),
+                ], ignore_conflicts=True)
 
                 nb_prod += 1
 
