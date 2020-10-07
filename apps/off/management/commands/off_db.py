@@ -81,7 +81,7 @@ class Command(BaseCommand):
                 nutrition_img
             ]):
                 # insert product in DB
-                Product.objects.bulk_create(
+                Product.objects.get_or_create(
                     name=name,
                     link=url,
                     nutriscore=nutriscore.lower(),
@@ -134,7 +134,7 @@ class Command(BaseCommand):
             if products_number > PRODUCT_EXPECTED_COUNT:
                 if ":" not in name and "-" not in name:
                     # save category in DB
-                    category, _ = Category.objects.bulk_create(name=name)
+                    category, _ = Category.objects.get_or_create(name=name)
                     # get products for this category
                     self.get_products(category, tag['url'], products_number)
                     category_selected += 1
