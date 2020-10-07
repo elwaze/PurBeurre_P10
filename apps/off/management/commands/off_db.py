@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ populating and updating purbeurre DB from openfoodfacts API."""
 import requests
+import logging
 
 from apps.off.models import Product
 from apps.off.models import Category
@@ -26,6 +27,7 @@ class Command(BaseCommand):
         super().__init__(*args, **kwargs)
 
         self.testing = False
+        self.logger = logging.getLogger(__name__)
 
     def add_arguments(self, parser):
         """
@@ -38,8 +40,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self.testing = options.get('testing')
-
+        self.logger.info('updating DB', exc_info=True)
         self.stdout.write('updating DB')
+        print('updating DB')
         # Category.objects.all().delete()
         api_url = 'https://fr.openfoodfacts.org/categories&json=1'
         request_categories = requests.get(api_url)
@@ -47,7 +50,9 @@ class Command(BaseCommand):
         tags = categories_json.get('tags')
         # make some sorting and get products
         self.get_categories(tags)
+        self.logger.info('DB successfully updated', exc_info=True)
         self.stdout.write(self.style.SUCCESS('DB successfully updated'))
+        print('DB successfully updated')
 
     def sort_and_register_products(self, products, category, nb_prod):
         """
