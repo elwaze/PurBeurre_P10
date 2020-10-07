@@ -1,8 +1,10 @@
-# PurBeurre_P8
-Openclassrooms DA-Python P8 Pur Beurre: 
-Créez une plateforme pour amateurs de Nutella
+# PurBeurre_P10
+Openclassrooms DA-Python P10 Pur Beurre: 
+Déployez votre application sur un serveur comme un pro
 
-### Create a web platform to find healthy substitutes to excessively fatty, over-sweetened or over-salted foods
+### Déploiement du P8 sur un serveur, intégration continue et monitoring
+
+### projet déployé : http://165.22.199.87/
 
 ### Constraints
 tests included in the project
