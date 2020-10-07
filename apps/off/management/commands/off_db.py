@@ -42,6 +42,7 @@ class Command(BaseCommand):
         self.testing = options.get('testing')
         self.logger.info('updating DB', exc_info=True)
         self.stdout.write('updating DB')
+        print('updating DB')
         # Category.objects.all().delete()
         api_url = 'https://fr.openfoodfacts.org/categories&json=1'
         request_categories = requests.get(api_url)
@@ -51,6 +52,7 @@ class Command(BaseCommand):
         self.get_categories(tags)
         self.logger.info('DB successfully updated', exc_info=True)
         self.stdout.write(self.style.SUCCESS('DB successfully updated'))
+        print('DB successfully updated')
 
     def sort_and_register_products(self, products, category, nb_prod):
         """
