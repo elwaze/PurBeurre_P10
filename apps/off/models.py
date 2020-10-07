@@ -62,7 +62,7 @@ class Product(models.Model):
 
     objects = ProductManager()
 
-    link = models.URLField()
+    link = models.URLField(unique=True)
     name = models.CharField(max_length=100, unique=True)
     nutriscore = models.CharField(max_length=1)
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
